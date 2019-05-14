@@ -1,4 +1,4 @@
-//g++ C++/PeronaMalik.cpp -o PeronaMalik -Icfitsio -Lcfitsio -lcfitsio -lm -lnsl -O2 `pkg-config --cflags`  ###command line to compile
+//g++ PeronaMalik.cpp -o PeronaMalik -Icfitsio -Lcfitsio -lcfitsio -lm -lnsl -O2 `pkg-config --cflags`  ###command line to compile
 // ./PeronaMalik image_name filter_function_number(INT:1-5) parameter_k no_noise_image_name     ###command line to run
 
 #include <iostream>
