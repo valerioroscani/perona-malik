@@ -33,9 +33,6 @@ int main(int argc, char *argv[]){
     long fpixel[2] = {1,1};
     long fpixel2[2] = {1,1};
     double mse=1000;
-    double mae=1000000000000;
-    double psnr;
-    double ssim_out;
     double mse_old=2000;
     double mae_old=2000000000000;
     double eps=1e-6;
