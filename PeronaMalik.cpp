@@ -1,4 +1,4 @@
-//g++ PeronaMalik.cpp -o PeronaMalik -Icfitsio -Lcfitsio -lcfitsio -lm -lnsl -O2 `pkg-config --cflags`  ###command line to compile
+//g++ PeronaMalik.cpp -o PeronaMalik -Icfitsio -Lcfitsio -lcfitsio -lm -lnsl -O`pkg-config --cflags`  ###command line to compile
 // ./PeronaMalik image_name filter_function_number(INT:1-5) parameter_k no_noise_image_name     ###command line to run
 
 #include <iostream>
@@ -41,9 +41,7 @@ int main(int argc, char *argv[]){
     double min_val2 = min_val;
     double max_val=-min_val;
     double max_val2 = max_val;
-    double C1,C2;
     
-    bool cond,cond2;
     ofstream outfile2 ("PM_mse_T_all.txt");
     fits_open_file(&fptr, name, READONLY, &status);
     fits_get_img_param(fptr, 2, &bitpix, &naxis, naxes, &status);
