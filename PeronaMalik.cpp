@@ -87,14 +87,14 @@ int main(int argc, char *argv[]){
     DuE = new double*[ni];
     for (int i=0; i<ni; i++)
     {
-	    u0[i]=new double[nj+npad];
+	u0[i]=new double[nj+npad];
         u[i]=new double[nj+npad];
         Orig[i] = new double[nj2+npad];
         N[i]=new double[nj+npad];
-	    S[i]=new double[nj+npad];
+	S[i]=new double[nj+npad];
         W[i]=new double[nj+npad];
         E[i]=new double[nj+npad];
-	    DuN[i]=new double[nj+npad];
+	DuN[i]=new double[nj+npad];
         DuS[i]=new double[nj+npad];
         DuW[i]=new double[nj+npad];
         DuE[i]=new double[nj+npad];
@@ -102,25 +102,25 @@ int main(int argc, char *argv[]){
     
     
     cout << " ni = " << ni 
-        << " nj = " << nj 
-        << " bp = " << bp 
-        << " name = " << name
-        << " naxis = " << naxis       
-        << " status = " << status 
-        << " k = " << k  
-        << " g = " << g            
-        << endl;
+         << " nj = " << nj 
+         << " bp = " << bp 
+         << " name = " << name
+         << " naxis = " << naxis       
+         << " status = " << status 
+         << " k = " << k  
+         << " g = " << g            
+         << endl;
     cout << " ni = " << ni2 
-            << " nj = " << nj2 
-            << " bp = " << bp2 
-            << " name = " << original
-            << " naxis = " << naxis2       
-            << " status = " << status2 
-            << " k = " << k  
-            << " g = " << g            
-        << endl;
+         << " nj = " << nj2 
+         << " bp = " << bp2 
+         << " name = " << original
+         << " naxis = " << naxis2       
+          << " status = " << status2 
+          << " k = " << k  
+          << " g = " << g            
+          << endl;
         
-	//filling up M with pixels read from the input_image with fits_read_pix
+    //filling up M with pixels read from the input_image with fits_read_pix
     for(int i=0;i<ni;i++)
     {
 
@@ -132,7 +132,7 @@ int main(int argc, char *argv[]){
         fits_read_pix(fptr, TDOUBLE, fpixel, nj, NULL, pixels, NULL, &status);
         fits_read_pix(fptr2, TDOUBLE, fpixel2, nj2, NULL, pixels2, NULL, &status2);
 
-		//finding min and max values in input image
+	//finding min and max values in input image
         for(int j=0; j<nj; j++)
         {
             u0[i][j] = pixels[j];
@@ -145,7 +145,7 @@ int main(int argc, char *argv[]){
     
     }
 
-	//normalization of the input image
+    //normalization of the input image
 
     for(int i=0; i<ni; ++i) 
     {
@@ -156,7 +156,7 @@ int main(int argc, char *argv[]){
         }
     } 
 
-	//Beginning of T cycle, for each cycle the Perona-Malik algorithm is applied here
+    //Beginning of T cycle, for each cycle the Perona-Malik algorithm is applied here
         
     while (T<500 and mse_old > mse and (mse_old - mse)/mse_old > 1e-10)
     {   
@@ -324,9 +324,8 @@ int main(int argc, char *argv[]){
             }
         }
         mse /= (ni*nj);
-        outfile2 << T << " " << mse << " " << mae << " " << psnr << endl;
     }
-	//end of T cycle and denormalyze back the denoised image using max_val and min_val from input
+    //end of T cycle and denormalyze back the denoised image using max_val and min_val from input
     for(int i=0; i<ni; ++i) 
     {
         for(int j=0; j<nj; ++j) 
@@ -335,7 +334,7 @@ int main(int argc, char *argv[]){
         }
     }
       
-	//writing the fits file for the output with name DenoisedPM.fits
+    //writing the fits file for the output with name DenoisedPM.fits
     double *array = new double[nj];
     fitsfile *outfptr;
     string str = "DenoisedPM.fits";
