@@ -160,9 +160,7 @@ int main(int argc, char *argv[]){
     {   
         cout << "T" << T << endl;
         mse_old = mse;        
-        mse=0; 
-        mae_old = mae;
-        mae=0;       
+        mse=0;       
         T++;
 
         for(int i=0;i<ni;i++)
